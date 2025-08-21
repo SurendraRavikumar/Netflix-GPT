@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
-import {checkValidData, checkValidDataSignUp} from '../utils/validate';
+import { checkValidData, checkValidDataSignUp } from '../utils/validate';
 
 const Login = () => {
   const [isSignInForm, setisSignInForm] = useState(true);  // Here i have careated the this state variable to check weather the user is Signed or not
-  const [errorMessage , setErrorMessage] = useState(null); // Here state variable to store the error message after checking the validation
+  const [errorMessage, setErrorMessage] = useState(null); // Here state variable to store the error message after checking the validation
 
   // With the help of this useRef Hook we keep the refrence to that particular form input element.
   const email = useRef(null);
@@ -29,11 +29,17 @@ const Login = () => {
     <div
       className="relative h-screen w-screen bg-cover bg-center"
       style={{
-        backgroundImage: `url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg/v1/fit/w_828,h_466,q_70,strp/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv-414w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvZjU2MmFhZjQtNWRiYi00NjAzLWEzMmItNmVmNmMyMjMwMTM2XC9kaDB3OHF2LTlkOGVlNmIyLWI0MWEtNDY4MS1hYjliLThhMjI3NTYwZGM3NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.LOYKSxIDqfPwWHR0SSJ-ugGQ6bECF0yO6Cmc0F26CQs')`,
+        backgroundImage: `url('https://assets.nflxext.com/ffe/siteui/vlv3/3e4bd046-85a3-40e1-842d-fa11cec84349/web/IN-en-20250818-TRIFECTA-perspective_4bd1b66d-bbb6-4bc6-ba8f-ecbba53a1278_large.jpg')`,
       }}
     >
+      {/* Black overlay on background */}
+      <div className="absolute inset-0 bg-black/60"></div>
+
+      {/* Header (Netflix logo) */}
       <Header />
-      <form onSubmit={(e)=>{e.preventDefault()}} className='w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80'>
+
+      {/* Sign In / Sign Up form */}
+      <form onSubmit={(e) => { e.preventDefault() }} className='w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80'>
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && <input ref={name} type='text' placeholder='User Name' className='p-2 my-2 w-full bg-gray-800 rounded-lg bg-opacity-80' />}
         <input ref={email} type='text' placeholder='Email Address' className='p-2 my-2 w-full bg-gray-800 rounded-lg bg-opacity-80' />
